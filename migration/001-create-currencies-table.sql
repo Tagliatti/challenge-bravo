@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS currencies (
+    symbol VARCHAR(10) PRIMARY KEY UNIQUE,
+    rate FLOAT NOT NULL
+);
