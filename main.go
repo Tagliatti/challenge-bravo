@@ -26,9 +26,11 @@ func main() {
 
 	healthHandler := health.NewHealthHandler()
 	createHandler := currency.NewCreateHandler(currencyRepository, currencyApi).Handler
+	updateHandler := currency.NewUpdateHandler(currencyRepository, currencyApi).Handler
 
 	http.HandleFunc("GET /health", healthHandler.Handle)
 	http.HandleFunc("POST /", createHandler)
+	http.HandleFunc("PUT /{symbol}", updateHandler)
 
 	log.Println("Servidor iniciado na porta 8080...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
